@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sua Opinião é Importante!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        /* --- Reset e Estilos Globais --- */
+        :root {
+            --primary-color: #007bff; /* Azul primário, fácil de alterar */
+            --success-color: #28a745; /* Verde para sucesso */
+            --danger-color: #dc3545;  /* Vermelho para alerta */
+            --text-color: #333;
+            --bg-color: #f4f7f6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* --- Container Principal --- */
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background-color: #fff;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        /* --- Header --- */
+        header {
+            margin-bottom: 30px;
+        }
+
+        header img.logo {
+            max-width: 120px;
+            margin-bottom: 10px;
+        }
+
+        header h2.company-name {
+            font-size: 1.2rem;
+            color: #555;
+            font-weight: 400;
+        }
+        
+        /* --- Seções de Conteúdo --- */
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        .choice-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 130px;
+            height: 110px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #fff;
+            text-decoration: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+        }
+
+        .btn i {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        #positive-btn {
+            background-color: var(--success-color);
+        }
+
+        #negative-btn {
+            background-color: var(--danger-color);
+        }
+        
+        /* --- Estilos do Formulário de Feedback --- */
+        #feedback-form-container, #thank-you-message {
+            display: none; /* Começam escondidos */
+        }
+        
+        .form-group {
+            text-align: left;
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        #submit-feedback {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.1rem;
+            background-color: var(--primary-color);
+            border: none;
+            color: #fff;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 10px;
+            transition: background-color 0.2s ease;
+        }
+
+        #submit-feedback:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
+</head>
+<body>
+
+    <main class="container">
+        <header>
+            <img src="https://via.placeholder.com/120x50.png?text=Sua+Logo" alt="Logo da Empresa" class="logo">
+            <h2 class="company-name">Nome da Sua Empresa</h2>
+        </header>
+
+        <div id="initial-question">
+            <h1>Como foi sua experiência conosco hoje?</h1>
+            <div class="choice-buttons">
+                <a href="#" id="positive-btn" class="btn">
+                    <i class="fa-solid fa-thumbs-up"></i>
+                    <span>Excelente</span>
+                </a>
+                <a href="#" id="negative-btn" class="btn">
+                    <i class="fa-solid fa-thumbs-down"></i>
+                    <span>Pode Melhorar</span>
+                </a>
+            </div>
+        </div>
+
+        <div id="feedback-form-container">
+            <h1>Que pena! Conte-nos mais.</h1>
+            <p style="margin-bottom: 20px; color: #555;">Seu feedback é privado e nos ajudará a melhorar nossos serviços.</p>
+            <form id="feedback-form">
+                <div class="form-group">
+                    <label for="name">Seu Nome (Opcional)</label>
+                    <input type="text" id="name" name="name">
+                </div>
+                <div class="form-group">
+                    <label for="contact">Email ou Telefone (Opcional)</label>
+                    <input type="text" id="contact" name="contact">
+                </div>
+                <div class="form-group">
+                    <label for="message">Sua Mensagem</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" id="submit-feedback">Enviar Feedback</button>
+            </form>
+        </div>
+
+        <div id="thank-you-message">
+            <h1>Obrigado!</h1>
+            <p>Agradecemos imensamente pelo seu feedback. Ele é muito importante para nós!</p>
+        </div>
+    </main>
+
+    <script>
+        // --- Lógica do Roteamento Inteligente ---
+
+        // PONTO DE CUSTOMIZAÇÃO 3: Link do Google Meu Negócio
+        const googleReviewLink = 'https://g.page/r/SEU_LINK_ESPECIFICO_AQUI/review';
+
+        // Selecionando os elementos da página
+        const positiveBtn = document.getElementById('positive-btn');
+        const negativeBtn = document.getElementById('negative-btn');
+        const initialQuestion = document.getElementById('initial-question');
+        const feedbackFormContainer = document.getElementById('feedback-form-container');
+        const feedbackForm = document.getElementById('feedback-form');
+        const thankYouMessage = document.getElementById('thank-you-message');
+
+        // Evento de clique no botão POSITIVO
+        positiveBtn.addEventListener('click', (event) => {
+            event.preventDefault(); // Previne qualquer ação padrão do link
+            // Redireciona o usuário para o link de avaliação do Google
+            window.location.href = googleReviewLink;
+        });
+
+        // Evento de clique no botão NEGATIVO
+        negativeBtn.addEventListener('click', (event) => {
+            event.preventDefault(); // Previne qualquer ação padrão do link
+            // Esconde a pergunta inicial
+            initialQuestion.style.display = 'none';
+            // Mostra o formulário de feedback
+            feedbackFormContainer.style.display = 'block';
+        });
+
+        // Evento de envio do formulário de feedback
+        feedbackForm.addEventListener('submit', (event) => {
+            event.preventDefault(); // Previne o recarregamento da página
+            
+            // --- AVISO: Lógica de protótipo ---
+            // Em um projeto real, aqui você enviaria os dados do formulário
+            // para um servidor ou para uma automação (usando fetch() para uma API).
+            // const formData = new FormData(feedbackForm);
+            // const data = Object.fromEntries(formData.entries());
+            // console.log('Dados a serem enviados:', data);
+
+            // Esconde o formulário
+            feedbackFormContainer.style.display = 'none';
+            // Mostra a mensagem de agradecimento
+            thankYouMessage.style.display = 'block';
+        });
+
+    </script>
+
+</body>
+</html>
