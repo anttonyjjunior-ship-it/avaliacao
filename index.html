@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sua Opinião é Importante!</title>
+    <title>Sua Opinião é Importante! - Mercadão Dos Óculos Itaúna</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
@@ -29,6 +29,7 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
@@ -44,6 +45,7 @@
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             text-align: center;
+            margin-bottom: 20px;
         }
 
         /* --- Header --- */
@@ -52,14 +54,14 @@
         }
 
         header img.logo {
-            max-width: 120px;
-            margin-bottom: 10px;
+            max-width: 150px; /* Aumentei um pouco para logos mais detalhadas */
+            margin-bottom: 15px;
         }
 
         header h2.company-name {
             font-size: 1.2rem;
             color: #555;
-            font-weight: 400;
+            font-weight: 600;
         }
         
         /* --- Seções de Conteúdo --- */
@@ -158,14 +160,32 @@
             background-color: #0056b3;
         }
 
+        /* --- NOVO: Estilos do Rodapé --- */
+        footer {
+            width: 100%;
+            max-width: 500px;
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+        }
+
+        .footer-left {
+            color: #555;
+        }
+
+        .footer-right {
+            color: #888; /* Cinza não muito escuro */
+        }
     </style>
 </head>
 <body>
 
     <main class="container">
         <header>
-            <img src="logo.png" alt="logo.png" class="logo">
-            <h2 class="company-name">Mercadão Dos Óculos</h2>
+            <img src="logo.png" alt="Logo Mercadão Dos Óculos" class="logo">
+            <h2 class="company-name">Mercadão Dos Óculos - Itaúna</h2>
         </header>
 
         <div id="initial-question">
@@ -208,11 +228,14 @@
         </div>
     </main>
 
-    <script>
-        // --- Lógica do Roteamento Inteligente ---
+    <footer>
+        <span class="footer-left">Copyright © 2025 Mercadão dos Óculos</span>
+        <span class="footer-right">Powered by Mercadão dos Óculos</span>
+    </footer>
 
-        // PONTO DE CUSTOMIZAÇÃO 3: Link do Google Meu Negócio
-        const googleReviewLink = 'https://g.page/r/SEU_LINK_ESPECIFICO_AQUI/review';
+    <script>
+        // --- Link de Avaliação para a LOJA DE ITAÚNA-MG ---
+        const googleReviewLink = 'https://g.page/r/CWhttEQywqYUEAE/review';
 
         // Selecionando os elementos da página
         const positiveBtn = document.getElementById('positive-btn');
@@ -224,41 +247,23 @@
 
         // Evento de clique no botão POSITIVO
         positiveBtn.addEventListener('click', (event) => {
-            event.preventDefault(); // Previne qualquer ação padrão do link
-            // Redireciona o usuário para o link de avaliação do Google
+            event.preventDefault();
             window.location.href = googleReviewLink;
         });
 
         // Evento de clique no botão NEGATIVO
         negativeBtn.addEventListener('click', (event) => {
-            event.preventDefault(); // Previne qualquer ação padrão do link
-            // Esconde a pergunta inicial
+            event.preventDefault();
             initialQuestion.style.display = 'none';
-            // Mostra o formulário de feedback
             feedbackFormContainer.style.display = 'block';
         });
 
         // Evento de envio do formulário de feedback
         feedbackForm.addEventListener('submit', (event) => {
-            event.preventDefault(); // Previne o recarregamento da página
-            
-            // --- AVISO: Lógica de protótipo ---
-            // Em um projeto real, aqui você enviaria os dados do formulário
-            // para um servidor ou para uma automação (usando fetch() para uma API).
-            // const formData = new FormData(feedbackForm);
-            // const data = Object.fromEntries(formData.entries());
-            // console.log('Dados a serem enviados:', data);
-
-            // Esconde o formulário
+            event.preventDefault();
             feedbackFormContainer.style.display = 'none';
-            // Mostra a mensagem de agradecimento
             thankYouMessage.style.display = 'block';
         });
-
     </script>
-
 </body>
-
 </html>
-
-
